@@ -10,5 +10,7 @@ router.register('videos', views.VideoViewSet, basename="users")
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('create/', views.CreateUserView.as_view(), name='create')
+    path('user/list', views.AdminOnlyUserList.as_view(), name='user_list'),
+    path('user/<str:pk>/', views.UserProfileView.as_view(), name='user'),
+    path('user/create/', views.CreateUserView.as_view(), name='create')
 ]
