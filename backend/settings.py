@@ -72,6 +72,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # rest_framework
 REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%Y-%m-%d %H:%M',
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
@@ -83,7 +84,7 @@ REST_FRAMEWORK = {
 # simple-jwt
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30), # 有効期限
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
 }
 
 # Database

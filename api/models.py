@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.utils import timezone
 import uuid
 
 def load_path_video(instance, filename):
@@ -34,9 +35,12 @@ class User(AbstractBaseUser, PermissionsMixin):
                           primary_key=True, editable=False)
     email = models.EmailField(max_length=255, unique=True)
     username = models.CharField(max_length=255, blank=True)
+    first_name = models.CharField(max_length=30, blank=True, null=True)
+    last_name = models.CharField(max_length=150, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-
+    date_joined = models.DateTimeField(default=timezone.now)
+    
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
